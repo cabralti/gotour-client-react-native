@@ -40,7 +40,7 @@ export default class ListaPacotes extends React.Component {
     return (
       <View>
         {pacotes.map((pacote, key) => (
-            <CardPacote detalhes={pacote} key={key}/>
+            <CardPacote detalhes={pacote} key={key} onPress={() => console.log('funcionou')}/>
         ))}
       </View>
     );
