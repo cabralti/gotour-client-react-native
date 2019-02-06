@@ -9,7 +9,10 @@ export default class DetalhePacote extends React.Component {
 
   //recuperando id do pacote do servidor
   componentDidMount(){
-    fetch('http://devup.com.br/gotour/api/pacote/88/detalhes')
+
+    const {pacoteId} =  this.props.match.params
+
+    fetch(`http://devup.com.br/gotour/api/pacote/${pacoteId}/detalhes`)
     .then(T => T.json())
     .then(dados => this.setState({ dados }))
     .catch(() => Alert.alert('Erro', 'Não foi possível recuperar os detalhes do pacote'))
@@ -42,7 +45,7 @@ export default class DetalhePacote extends React.Component {
             Preço: {dados.pacote.valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'} )}
           </Text>
         </View>
-        <Button title='Voltar' onPress={() => console.log('voltar')}></Button>
+        <Button title='Voltar' onPress={() => this.props.history.push('/')}></Button>
       </View>
     );
   }
